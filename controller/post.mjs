@@ -31,13 +31,11 @@ export async function createPost(req, res, next) {
 // 포스트를 수정하는 함수
 export async function updatePost(req, res, next) {
   const id = req.params.id;
-  const { text } = req.body; // 업데이트 내용은 바디에서 받아야함.
-
-  const updated = await postRepository.update(id, text);
+  const text = req.body; // 업데이트 내용은 바디에서 받아야 함.
+  const post = await postRepository.update(id, text);
   // postRepository에 실제 update() 호출
-
-  if (updated) {
-    res.status(200).json(updated); // 업데이트된 포스트 반환
+  if (post) {
+    res.status(200).json(post); // 업데이트된 포스트 반환
   } else {
     res.status(404).json({ message: `${id}의 포스트가 없습니다.` });
   }
@@ -46,13 +44,6 @@ export async function updatePost(req, res, next) {
 // 포스트를 삭제하는 함수
 export async function deletePost(req, res, next) {
   const id = req.params.id;
-  //   const { text } = req.body; // 안꺼내도 됨
-
-  const deleted = await postRepository.delete(id);
-
-  if (deleted) {
-    res.status(200).json({ message: `${id}의 포스트를 삭제했습니다.` });
-  } else {
-    res.status(404).json({ message: `${id}의 포스트가 없습니다.` });
-  }
+  await postRepository.remove(id); // 만들어 둔(data/post.mjs) 메소드 사용
+  res.sendStatus(204);
 }
