@@ -11,8 +11,4 @@ router.post("/signup", authController.signup);
 // http://127.0.0.1:8080/auth/login
 router.post("/login", authController.login);
 
-// 로그인 유지하기
-//
-// router.get("/", postController.maintainUsers);
-
 export default router;
