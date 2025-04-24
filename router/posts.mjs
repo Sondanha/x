@@ -10,7 +10,7 @@ const router = express.Router();
 // http://127.0.0.1:8080/posts?userid=dana4777
 router.get("/", postController.getPosts);
 
-// 글 번호에 대한 post 가져오기// GET
+// 글 번호에 대한 post 가져오기
 // GET
 // http://127.0.0.1:8080/posts/:id
 router.get("/:id", postController.getPost);

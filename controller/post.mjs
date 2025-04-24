@@ -31,7 +31,7 @@ export async function createPost(req, res, next) {
 // 포스트를 수정하는 함수
 export async function updatePost(req, res, next) {
   const id = req.params.id;
-  const text = req.body; // 업데이트 내용은 바디에서 받아야 함.
+  const { text } = req.body; // 업데이트 내용은 바디에서 받아야 함.
   const post = await postRepository.update(id, text);
   // postRepository에 실제 update() 호출
   if (post) {
