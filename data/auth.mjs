@@ -41,7 +41,7 @@ let users = [
   },
 ];
 
-export async function createUsers(userid, password, name, email) {
+export async function createUser(userid, password, name, email) {
   const user = {
     id: Date.now().toString(),
     userid,
@@ -59,4 +59,12 @@ export async function login(userid, password) {
     user.userid === userid && user, password === password;
   });
   return user;
+}
+
+export async function findByUserid(userid) {
+  return users.find((user) => user.userid === userid);
+}
+
+export async function findByid(id) {
+  return users.find((user) => user.id === id);
 }
