@@ -56,7 +56,7 @@ export async function createUser(userid, password, name, email) {
 
 export async function login(userid, password) {
   const user = users.find((user) => {
-    user.userid === userid && user, password === password;
+    user.userid === userid && user.password === password;
   });
   return user;
 }
