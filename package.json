@@ -4,7 +4,8 @@
   "main": "app.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon app.mjs"
+    "dev": "nodemon app.mjs",
+    "start": "app.mjs"
   },
   "keywords": [],
   "author": "",
