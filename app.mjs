@@ -17,4 +17,6 @@ app.use((req, res) => {
 });
 // app.listen(8080);
 
-app.listen(config.host.port);
+app.listen(config.host.port, () => {
+  console.log(`✅ Server running on port ${config.host.port}`);
+});
