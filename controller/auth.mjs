@@ -1,9 +1,9 @@
-import * as postRepository from "../data/auth.mjs";
+import * as authController from "../data/auth.mjs";
 
 // 회원을 생성하는 함수
 export async function signup(req, res, next) {
   const { userid, password, name, email } = req.body;
-  const users = await postRepository.createUsers(userid, password, name, email);
+  const users = await authController.createUsers(userid, password, name, email);
   if (users) {
     res.status(201).json(users);
   }
@@ -12,7 +12,7 @@ export async function signup(req, res, next) {
 // 로그인하는 함수
 export async function login(req, res, next) {
   const { userid, password } = req.body;
-  const user = await postRepository.login(userid, password);
+  const user = await authController.login(userid, password);
   if (user) {
     res.status(201).json(`${userid}님 로그인 완료!`);
   } else {
