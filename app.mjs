@@ -1,4 +1,4 @@
-console.log("🚀 process.env.PORT:");
+console.log("🚀 process.env.PORT:", process.env.PORT);
 
 import express from "express";
 import postsRouter from "./router/posts.mjs";
@@ -17,4 +17,8 @@ app.use("/auth", authRouter);
 app.use((req, res) => {
   res.status(404).json({ message: "잘못된 요청입니다." });
 });
-app.listen(config.host.port);
+const port = process.env.PORT || 8080;
+
+app.listen(port, "0.0.0.0", () => {
+  console.log(`✅ Server running on port ${port}`);
+});
