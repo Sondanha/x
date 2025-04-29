@@ -4,6 +4,7 @@ import express from "express";
 import postsRouter from "./router/posts.mjs";
 import authRouter from "./router/auth.mjs";
 import { config } from "./config.mjs";
+
 import cors from "cors";
 
 const app = express();
@@ -13,6 +14,7 @@ app.use(cors());
 
 app.use("/posts", postsRouter);
 app.use("/auth", authRouter);
+app.use(express.static(path.join(__dirname, "main")));
 
 app.use((req, res) => {
   res.status(404).json({ message: "잘못된 요청입니다." });
