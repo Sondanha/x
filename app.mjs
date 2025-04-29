@@ -28,6 +28,9 @@ app.get("/", (req, res) => {
 app.get("/signup", (req, res) => {
   res.sendFile(path.join(__dirname, "main", "signup.html"));
 });
+app.get("/login", (req, res) => {
+  res.sendFile(path.join(__dirname, "main", "signup.html"));
+});
 
 app.use((req, res) => {
   res.status(404).json({ message: "잘못된 요청입니다." });
