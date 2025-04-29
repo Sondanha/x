@@ -75,6 +75,11 @@ if (loginButton && window.location.pathname.includes("login")) {
 
       alert("로그인 성공!");
       localStorage.setItem("token", data.token);
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ userid: data.userid, name: data.name })
+      );
+      window.location.href = "/posts.html";
     } catch (error) {
       console.error("로그인 오류:", error);
       alert("로그인 중 문제가 발생했습니다.");
