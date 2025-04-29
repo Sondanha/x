@@ -1,5 +1,3 @@
-console.log("🚀 process.env.PORT:", process.env.PORT);
-
 import express from "express";
 import postsRouter from "./router/posts.mjs";
 import authRouter from "./router/auth.mjs";
@@ -31,6 +29,9 @@ app.get("/login", (req, res) => {
 
 app.get("/signup", (req, res) => {
   res.sendFile(path.join(__dirname, "main", "signup.html"));
+});
+app.get("/posts.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "main", "posts.html"));
 });
 
 app.use((req, res) => {
