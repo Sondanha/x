@@ -1,5 +1,7 @@
-const SERVER_URL = "http://localhost:8080";
+// 현재 페이지의 주소 기반으로 서버 주소 자동 설정 (Cloudtype 배포용)
+const SERVER_URL = location.origin;
 
+// 회원가입 버튼 처리
 const signupButton = document.querySelector(
   "button[type=submit]:not(#login-button)"
 );
@@ -33,7 +35,7 @@ if (signupButton && window.location.pathname.includes("signup")) {
       }
 
       alert("회원가입 성공! 로그인 페이지로 이동합니다.");
-      window.location.href = "/main/login.html";
+      window.location.href = "/login";
     } catch (error) {
       console.error("회원가입 오류:", error);
       alert("회원가입 중 문제가 발생했습니다.");
@@ -41,7 +43,7 @@ if (signupButton && window.location.pathname.includes("signup")) {
   });
 }
 
-// 로그인
+// 로그인 버튼 처리
 const loginButton = document.querySelector("button[type=submit]");
 if (loginButton && window.location.pathname.includes("login")) {
   loginButton.addEventListener("click", async (e) => {
@@ -70,8 +72,8 @@ if (loginButton && window.location.pathname.includes("login")) {
         alert(data.message || "로그인 실패");
         return;
       }
-      alert("로그인 성공!");
 
+      alert("로그인 성공!");
       localStorage.setItem("token", data.token);
     } catch (error) {
       console.error("로그인 오류:", error);
