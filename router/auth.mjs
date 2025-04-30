@@ -26,15 +26,9 @@ const validateSignup = [
   validate,
 ];
 
-// 회원가입하기
-// http://127.0.0.1:8080/auth/signup
 router.post("/signup", validateSignup, authController.signup);
-
-// 로그인하기
-// http://127.0.0.1:8080/auth/login
 router.post("/login", validateLogin, authController.login);
 
-// 로그인 유지하기
 // router.get("/", postController.maintainUsers);
 
 export default router;

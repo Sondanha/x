@@ -6,10 +6,15 @@ import path from "path";
 import { fileURLToPath } from "url";
 import cors from "cors";
 
+import { loadUsers } from "./data/auth.mjs";
+import { loadPosts } from "./data/post.mjs";
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
+await loadUsers();
+await loadPosts();
 
 app.use(express.json());
 app.use(cors());
@@ -22,16 +27,11 @@ app.use(express.static(path.join(__dirname, "main")));
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "main", "login.html"));
 });
-
 app.get("/login", (req, res) => {
   res.sendFile(path.join(__dirname, "main", "login.html"));
 });
-
 app.get("/signup", (req, res) => {
   res.sendFile(path.join(__dirname, "main", "signup.html"));
-});
-app.get("/posts.html", (req, res) => {
-  res.sendFile(path.join(__dirname, "main", "posts.html"));
 });
 
 app.use((req, res) => {
@@ -39,6 +39,6 @@ app.use((req, res) => {
 });
 
 const port = process.env.PORT || 8080;
-app.listen(port, "0.0.0.0", () => {
+app.listen(port, () => {
   console.log(`✅ Server running on port ${port}`);
 });
